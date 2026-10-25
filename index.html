@@ -3,31 +3,136 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Маркетинговая концепция сайта</title>
+    <title>Digital-Агентство NeoStart | Создание и продвижение сайтов</title>
     <style>
-        body { font-family: Arial, sans-serif; max-width: 800px; margin: 40px auto; padding: 0 20px; line-height: 1.6; background-color: #f4f4f9; color: #333; }
-        h1 { color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px; }
-        h2 { color: #2980b9; margin-top: 30px; }
-        .box { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); margin-bottom: 20px; }
-        ul { padding-left: 20px; }
-        li { margin-bottom: 10px; }
-        strong { color: #e74c3c; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: #f8f9fa; color: #333; line-height: 1.6; }
+        header { background: #1a1a2e; color: #fff; padding: 20px 0; position: fixed; width: 100%; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.3); }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 24px; font-weight: bold; color: #4e54c8; text-transform: uppercase; letter-spacing: 1px; }
+        .logo span { color: #00f2fe; }
+        nav a { color: #fff; text-decoration: none; margin-left: 20px; transition: 0.3s; font-size: 15px; }
+        nav a:hover { color: #00f2fe; }
+        
+        .hero { background: linear-gradient(135deg, #1a1a2e 0%, #4e54c8 100%); color: #fff; padding: 180px 0 100px; text-align: center; }
+        .hero h1 { font-size: 48px; margin-bottom: 20px; font-weight: 800; }
+        .hero p { font-size: 20px; margin-bottom: 40px; color: #e0e0e0; }
+        
+        .btn { display: inline-block; background: #00f2fe; color: #1a1a2e; padding: 15px 35px; border-radius: 50px; font-weight: bold; text-decoration: none; transition: 0.3s; border: none; cursor: pointer; box-shadow: 0 4px 15px rgba(0,242,254,0.4); font-size: 16px; }
+        .btn:hover { background: #fff; transform: translateY(-3px); box-shadow: 0 6px 20px rgba(255,255,255,0.4); }
+        
+        .services { padding: 80px 0; text-align: center; background: #fff; }
+        .services h2 { font-size: 36px; margin-bottom: 50px; color: #1a1a2e; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1max)); gap: 30px; }
+        .card { background: #f8f9fa; padding: 40px 30px; border-radius: 12px; transition: 0.3s; border: 1px solid #eee; text-align: left; }
+        .card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); border-color: #4e54c8; }
+        .card h3 { margin-bottom: 15px; color: #1a1a2e; font-size: 22px; }
+        .card p { color: #666; margin-bottom: 25px; }
+        .card .btn-link { color: #4e54c8; font-weight: bold; text-decoration: none; }
+        .card .btn-link:hover { text-decoration: underline; }
+        
+        .form-section { padding: 80px 0; background: #1a1a2e; color: #fff; text-align: center; }
+        .form-section h2 { font-size: 36px; margin-bottom: 20px; }
+        .form-section p { margin-bottom: 40px; color: #a0a0a0; }
+        form { max-width: 500px; margin: 0 auto; background: rgba(255,255,255,0.05); padding: 40px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.1); }
+        input { width: 100%; padding: 15px; margin-bottom: 20px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.1); color: #fff; font-size: 16px; }
+        input::placeholder { color: #ccc; }
+        input:focus { outline: none; border-color: #00f2fe; background: rgba(255,255,255,0.15); }
+        
+        footer { background: #111; color: #666; padding: 30px 0; text-align: center; font-size: 14px; }
+        
+        /* Всплывающее окно для демонстрации конверсии */
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); justify-content: center; align-items: center; z-index: 2000; }
+        .modal-content { background: #fff; color: #333; padding: 40px; border-radius: 15px; text-align: center; max-width: 450px; width: 90%; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .modal h3 { font-size: 26px; color: #1a1a2e; margin-bottom: 15px; }
+        .modal p { color: #666; margin-bottom: 25px; }
     </style>
 </head>
 <body>
 
-    <h1>Маркетинговая концепция сайта</h1>
-    
-    <div class="box">
-        <h2>Вопрос 5: Как измерим эффективность сайта?</h2>
-        <p>Для оценки успешности проекта мы внедрим сквозную аналитику, опираясь на 4 ключевых элемента со слайда:</p>
-        <ul>
-            <li><strong>Воронка (Путь пользователя):</strong> Будем отслеживать этапы: Показ рекламы → Клик и переход на сайт → Просмотр целевой страницы → Клик по кнопке заказа → Успешная оплата. Это покажет, на каком шаге мы теряем людей.</li>
-            <li><strong>Конверсия (Эффективность этапа):</strong> Главный маркер — конверсия в целевое действие (CTA). Рассчитывается как: (Количество покупок / Общее число посетителей) * 100%. Наша цель — удерживать её на уровне не менее 3-5%.</li>
-            <li><strong>CTA (Точка действия):</strong> Настроим клик-трекинг (отслеживание нажатий) на все основные кнопки («Купить», «Оставить заявку»). Будем замерять, какая именно кнопка и в каком месте страницы приносит больше всего кликов.</li>
-            <li><strong>Аналитика (Понимание результата):</strong> Подключим Яндекс.Метрику / Google Analytics. Будем анализировать: источники трафика (откуда пришли), показатель отказов (сколько ушло сразу) и карту кликов (куда смотрят).</li>
-        </ul>
-    </div>
+    <header>
+        <div class="container">
+            <div class="logo">Neo<span>Start</span></div>
+            <nav>
+                <a href="#hero">Главная</a>
+                <a href="#services">Услуги</a>
+                <a href="#contact">Контакты</a>
+            </nav>
+        </div>
+    </header>
 
+    <section id="hero" class="hero">
+        <div class="container" style="display: block;">
+            <h1>Взрывной рост вашего бизнеса в интернете</h1>
+            <p>Создаем современные кликабельные сайты и настраиваем сквозную аналитику под ключ.</p>
+            <button class="btn" onclick="scrollToForm()">Запустить проект (CTA)</button>
+        </div>
+    </section>
+
+    <section id="services" class="services">
+        <div class="container" style="display: block;">
+            <h2>Наши услуги</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Разработка сайтов</h3>
+                    <p>Проектируем адаптивные лендинги и многостраничные интернет-магазины с высокой скоростью загрузки.</p>
+                    <a href="#contact" class="btn-link" onclick="scrollToForm()">Оставить заявку &rarr;</a>
+                </div>
+                <div class="card">
+                    <h3>Настройка аналитики</h3>
+                    <p>Подключаем Яндекс.Метрику, настраиваем отслеживание целей, воронки продаж и кликабельность кнопок.</p>
+                    <a href="#contact" class="btn-link" onclick="scrollToForm()">Оставить заявку &rarr;</a>
+                </div>
+                <div class="card">
+                    <h3>Контекстная реклама</h3>
+                    <p>Запускаем эффективные рекламные кампании для быстрого привлечения целевых клиентов.</p>
+                    <a href="#contact" class="btn-link" onclick="scrollToForm()">Оставить заявку &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="form-section">
+        <div class="container" style="display: block;">
+            <h2>Готовы начать?</h2>
+            <p>Оставьте свои контакты, и мы свяжемся с вами в течение 15 минут для обсуждения воронки вашего проекта.</p>
+            <form id="leadForm" onsubmit="handleFormSubmit(event)">
+                <input type="text" placeholder="Ваше имя" required>
+                <input type="tel" placeholder="Номер телефона" required>
+                <button type="submit" class="btn" style="width: 100%;">Отправить данные формы (CTA)</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container" style="justify-content: center;">
+            <p>&copy; 2026 Лендинг для демонстрации маркетинговой концепции (Воронка, Конверсия, CTA).</p>
+        </div>
+    </footer>
+
+    <!-- Окно успеха при клике -->
+    <div id="successModal" class="modal">
+        <div class="modal-content">
+            <h3>Заявка успешно отправлена!</h3>
+            <p><strong>Маркетинговый шаг выполнен:</strong> Сработало целевое действие (CTA). В реальной системе аналитики этот шаг зафиксировал бы успешное завершение воронки и зачитал +1 к общей конверсии сайта.</p>
+            <button class="btn" onclick="closeModal()">Закрыть окно</button>
+        </div>
+    </select>
+
+    <script>
+        function scrollToForm() {
+            document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            document.getElementById('successModal').style.display = 'flex';
+            document.getElementById('leadForm').reset();
+        }
+
+        function closeModal() {
+            document.getElementById('successModal').style.display = 'none';
+        }
+    </script>
 </body>
 </html>
